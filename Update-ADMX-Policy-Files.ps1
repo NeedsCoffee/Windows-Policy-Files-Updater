@@ -22,7 +22,7 @@ function LaunchFromWrapper {
         $script:MSI_URL = $script:MSI_URL_default
     }
     Write-Output "Launching wrapped admin-console"
-    Start-Process PowerShell.exe -WorkingDirectory $script:working_dir -ArgumentList "-File `"$PSCommandPath`" -Wrapped -MSI_URL:`"$script:MSI_URL`" -AcquireModuleInWrapper:$script:AcquireModuleInWrapper -Working_Dir:`"$script:working_dir`"" -Verb RunAs -Wait
+    Start-Process PowerShell.exe -WorkingDirectory $script:working_dir -ArgumentList "-NoProfile -File `"$PSCommandPath`" -Wrapped -MSI_URL:`"$script:MSI_URL`" -AcquireModuleInWrapper:$script:AcquireModuleInWrapper -Working_Dir:`"$script:working_dir`"" -Verb RunAs -Wait
 }
 function PrepareEnvironment {
     Write-Output 'Preparing script environment'
@@ -33,7 +33,11 @@ function PrepareEnvironment {
 
 function AcquireModule {
     Write-Output 'Acquring module NtObjectManager'
-    Import-Module PowerShellGet -Force
+    Import-Module "$env:ProgramFiles\WindowsPowerShell\Modules\PackageManagement" -Force
+    Import-Module "$env:ProgramFiles\WindowsPowerShell\Modules\PowerShellGet" -Force
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -ForceBootstrap -EA:Si | Out-Null
+    Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force -EA:Si
+    Register-PSRepository -Default -InstallationPolicy Trusted -EA:Si
     Save-Module -Name NtObjectManager -Repository PSGallery -Path "$script:working_dir\module" -Force
     Import-Module "$script:working_dir\module\NtObjectManager" -Force
 }
