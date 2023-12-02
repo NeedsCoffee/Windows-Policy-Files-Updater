@@ -4,7 +4,7 @@
 
 Microsoft provides no way to update ADMX files in the c:\Windows\PolicyDefinitions folder and in fact makes it extraordinarily difficult for anyone, even a skilled administrator, to replace these files. However if you can act as the TrustedInstaller service you can actually do this quite easily it turns out.
 
-This PowerShell script solves this problem simply and quickly by downloading the msi, extracting it, and then copying the files using the necessary privilages required to complete the task.
+This PowerShell script solves this problem simply and quickly by downloading the msi, extracting it, and then copying the files using the necessary privileges required to complete the task.
 
 The current latest templates are the "Administrative Templates (.admx) for Windows 11 2023 Update (23H2)" found here: https://www.microsoft.com/en-us/download/details.aspx?id=105667
 
