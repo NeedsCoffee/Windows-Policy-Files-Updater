@@ -6,7 +6,7 @@ param (
     [Parameter(DontShow)][string]$Working_Dir
 )
 
-$MSI_URL_default = 'https://download.microsoft.com/download/b/e/e/bee408b9-d574-4c96-a1a6-45648d5565bf/Administrative%20Templates%20(.admx)%20for%20Windows%2011%20October%202023%20Update.msi'
+$MSI_URL_default = 'https://download.microsoft.com/download/9/5/b/95be347e-c49e-4ede-a205-467c85eb1674/Administrative%20Templates%20(.admx)%20for%20Windows%2011%20Sep%202024%20Update.msi'
 $startingPath = Get-Location
 
 function TestForModule {
