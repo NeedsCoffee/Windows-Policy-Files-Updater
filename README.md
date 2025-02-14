@@ -6,7 +6,7 @@ Microsoft provides no way to update ADMX files in the c:\Windows\PolicyDefinitio
 
 This PowerShell script solves this problem simply and quickly by downloading the msi, extracting it, and then copying the files using the necessary privileges required to complete the task.
 
-The current latest templates are the "Administrative Templates (.admx) for Windows 11 2023 Update (23H2)" found here: https://www.microsoft.com/en-us/download/details.aspx?id=105667
+The current latest templates are the "Administrative Templates (.admx) for Windows 11 2024 Update (24H2)" found here: [https://www.microsoft.com/en-us/download/details.aspx?id=105667](https://www.microsoft.com/en-gb/download/details.aspx?id=106254)
 
 ## How to run the script
 > Download **Update-ADMX-Policy-Files.ps1** from the repo, then right-click the file and choose "Run with PowerShell"
